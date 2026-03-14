@@ -16,7 +16,7 @@ I will try to regularly update it with the next steps in a TDA pipeline.
    $$VR(X, r) = \{ \sigma \subseteq X \mid d(x_i, x_j) \le r \text{ for all } x_i, x_j \in \sigma \}$$
 
 
-3. What is a simplicial complex or a simplex?
+3. What is a simplex?
 
    A simplex is the convex hull of \(k+1\) affinely independent points, forming a \(k\)-dimensional generalization of a triangle or
    tetrahedron. Simply speaking, all points independently form a $0$-simplex, and if I connect two points via an edge, they form a
