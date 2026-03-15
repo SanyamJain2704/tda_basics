@@ -1,13 +1,15 @@
 import math
 import networkx as nx
+import numpy as np
 
 class VietorisRips:
-  def __init__(self, data):
+  def __init__(self, data, use_weights=True):
 
     self.data=data
     self.simplicial_complex={}
+    self.use_weights=use_weights
 
-    if isinstance(data,nx.Graph):    
+    if isinstance(data,nx.Graph):
       self.input_type="graph"
 
     else:
@@ -24,6 +26,8 @@ class VietorisRips:
 
   def _apply_filtration_graph(self,G):
 
+    self.simplicial_complex={}
+
     weighted=any( "weight" in data for _,_,data in G.edges(data=True)) ##Check if the graph is weighted
 
     for clique in nx.enumerate_all_cliques(G):
@@ -32,13 +36,13 @@ class VietorisRips:
       if dim not in self.simplicial_complex:
         self.simplicial_complex[dim]=[]
 
-      if not weighted:
+      if not weighted or not self.use_weights:
         filtration_value=dim
-      
+
       else:
         if dim==0:
           filtration_value=0
-        
+
         else:
           edges=[
               G[u][v]["weight"]
@@ -61,15 +65,34 @@ class VietorisRips:
       G.add_node(i)
 
     for i in range(n):
-      for j in range(i,n+1):
-        d=self._distance(i,j)
+      for j in range(i+1,n):
+        d=self._distance(self.data[i],self.data[j])
         G.add_edge(i,j,weight=d)
 
     return G
 
-  def _distance(self,i,j):
+  def _distance(self,p,q):
 
-    return math.sqrt(sum((a-b)**2 for a,b in zip(i,j)))
+    return np.linalg.norm(p-q)
+
+  def get_filtration_list(self):
+
+    if not self.simplicial_complex:
+      self.apply_filtration()
+    
+    filtration_list=[]
+
+    for dim in self.simplicial_complex:
+      for clique,filtration_value in self.simplicial_complex[dim]:
+        filtration_list.append((clique,filtration_value))
+
+    filtration_list.sort(key = lambda x: (x[1],len(x[0])))
+
+    return filtration_list
+        
+
+
+
 
   
   
