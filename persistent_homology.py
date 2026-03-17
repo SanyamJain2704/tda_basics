@@ -5,15 +5,15 @@ from itertools import combinations
 from vietoris_rips import VietorisRips
 
 
-def face(simplex):
+def faces(simplex):
 
-  face=[]
+  faces_list=[]
   k=len(simplex)
   
   for s in combinations(simplex,k-1):
-    face.append(tuple(s))
+    faces_list.append(tuple(sorted(s)))
 
-  return face
+  return faces_list
 
   
 
@@ -41,5 +41,55 @@ def build_boundary_matrix(filtration):
     for f in face(simplex):
       boundary_matrix[j].append(simplex_index[f])
 
+    boundary_matrix[j].sort()
+
   return boundary_matrix
+
+def reduce_boundary_matrix(boundary_matrix):
+
+    reduced = [col.copy() for col in boundary_matrix]
+
+    low_dict = {}
+
+    for j in range(len(reduced)):
+
+        while True:
+
+            if not reduced[j]:
+                break
+
+            pivot = max(reduced[j])
+
+            if pivot in low_dict:
+
+                k = low_dict[pivot]
+
+                reduced[j] = list(set(reduced[j]) ^ set(reduced[k]))
+
+                reduced[j].sort()
+
+            else:
+                break
+
+        if reduced[j]:
+            pivot = max(reduced[j])
+            low_dict[pivot] = j
+
+    return reduced, low_dict
+
+def extract_pairs(filtration, reduced, low_dict):
+
+    pairs = []
+    
+    used_births = set()
+
+    for pivot, j in low_dict.items():
+        pairs.append((pivot, j))
+        used_births.add(pivot)
+
+    for i in range(len(filtration)):
+        if not reduced[i] and i not in used_births:
+            pairs.append((i, float('inf')))
+
+    return pairs
     
