@@ -25,8 +25,7 @@ def build_simplex_index(filtration):
     simplex_index[simplex]=i
 
   return simplex_index
-
-
+  
 def build_boundary_matrix(filtration):
 
   simplex_index=build_simplex_index(filtration)
@@ -38,12 +37,15 @@ def build_boundary_matrix(filtration):
     if(len(simplex)==1):
       continue
     
-    for f in face(simplex):
+    for f in faces(simplex):
       boundary_matrix[j].append(simplex_index[f])
 
     boundary_matrix[j].sort()
 
   return boundary_matrix
+
+def xor_lists(a, b):
+    return sorted(list(set(a) ^ set(b)))
 
 def reduce_boundary_matrix(boundary_matrix):
 
@@ -64,7 +66,7 @@ def reduce_boundary_matrix(boundary_matrix):
 
                 k = low_dict[pivot]
 
-                reduced[j] = list(set(reduced[j]) ^ set(reduced[k]))
+                reduced[j] = xor_lists(reduced[j], reduced[k])
 
                 reduced[j].sort()
 
