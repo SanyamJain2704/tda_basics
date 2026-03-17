@@ -177,3 +177,87 @@ Interpretation:
 
 - Column 3 (simplex (0, 1)) has ones in rows 0 and 1.
 - Column 6 (simplex (0, 1, 2)) has ones in rows 3, 4, and 5.
+
+---
+
+### 7. What is matrix reduction in persistent homology?
+Once we construct the boundary matrix, the next step is to reduce it in order to extract topological information.
+
+**The goal of matrix reduction is:**
+* To ensure that no two columns have the same pivot (lowest non-zero entry).
+* To uniquely pair the birth and death of topological features.
+
+**Pivot (low function)**
+For a column $j$, define:
+$$\text{low}(j) = \max \{ i \mid D_{ij} = 1 \}$$
+i.e., the largest row index where the column has a non-zero entry. If the column is empty, $\text{low}(j)$ is undefined.
+
+**Reduction Rule**
+We process columns from left to right. For each column $j$, if there exists a column $k < j$ such that:
+$$\text{low}(k) = \text{low}(j)$$
+then we perform a column operation (modulo $2$):
+$$D_j \leftarrow D_j + D_k$$
+This corresponds to taking the symmetric difference of the two columns.
+
+We repeat this until:
+* Either the column becomes empty, or
+* Its pivot becomes unique.
+
+**Key Property After Reduction**
+After reduction:
+* No two columns share the same pivot.
+* Each pivot uniquely corresponds to a death event.
+
+---
+
+### 8. Birth and Death of Features
+The reduced matrix allows us to identify topological features. Each simplex (column) behaves in one of two ways:
+
+**Case 1: Empty column**
+If a column becomes empty after reduction:
+$$D_j = \emptyset$$
+then it corresponds to the **birth** of a new feature.
+
+**Case 2: Column with pivot**
+If a column has a pivot:
+$$\text{low}(j) = i$$
+then the simplex at index $j$ **kills** the feature born at index $i$. This gives a birth–death pair:
+$$(i, j)$$
+
+---
+
+### 9. Persistence Pairs
+From the reduction, we extract pairs:
+$$(\text{birth index}, \text{death index})$$
+
+These can be converted to filtration values using the filtration:
+$$(\text{birth time}, \text{death time})$$
+
+**Infinite Persistence**
+If a column is empty and never gets paired, the feature persists forever:
+$$(i, \infty)$$
+
+---
+
+### 10. Example (Triangle)
+Consider the filtration:
+$$(0), (1), (2), (0,1), (0,2), (1,2), (0,1,2)$$
+
+After reduction, we obtain the pairs:
+$$(1,3), (2,4), (5,6)$$
+
+**Interpretation:**
+* Two connected components die when edges appear.
+* A loop is created and later filled by the triangle.
+
+---
+
+### 11. Intuition
+The entire process can be understood as:
+* **Vertices** create connected components.
+* **Edges** merge components or create loops.
+* **Triangles** fill loops.
+
+Matrix reduction ensures that:
+* Every feature is born exactly once.
+* Every feature is killed at most once.
