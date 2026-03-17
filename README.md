@@ -1,9 +1,8 @@
 # tda_basics
 
-This repository currently implements Vietoris–Rips filtration from scratch for:
+This repository currently implements Vietoris–Rips filtration and basic Algebraic functions (extracting faces, creating indices for simplicial complexes and building the boundary matrix) from scratch for:
 1. Graphs (NetworkX)
 2. Point Clouds
-3. Basic Algebraic functions (extracting faces, creating indices for simplicial complexes and building the boundary matrix)
 
 Since this is a first implementation, it currently utilizes NetworkX to handle graph functionalities. In the future, I could move away from it.  
 This repo is being made for better understanding of TDA concepts and implementing stuff from scratch. I will try to regularly update it with the next steps in a TDA pipeline.
