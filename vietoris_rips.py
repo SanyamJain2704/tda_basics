@@ -3,11 +3,13 @@ import networkx as nx
 import numpy as np
 
 class VietorisRips:
-  def __init__(self, data, use_weights=True):
+  def __init__(self, data, use_weights=True, max_dim=None, epsilon=None):
 
     self.data=data
     self.simplicial_complex={}
     self.use_weights=use_weights
+    self.max_dim=max_dim
+    self.epsilon=epsilon
 
     if isinstance(data,nx.Graph):
       self.input_type="graph"
@@ -24,37 +26,38 @@ class VietorisRips:
       G=self._build_distance_graph()
       return self._apply_filtration_graph(G)
 
-  def _apply_filtration_graph(self,G):
+  def _apply_filtration_graph(self, G):
 
-    self.simplicial_complex={}
+    self.simplicial_complex = {}
 
-    weighted=any( "weight" in data for _,_,data in G.edges(data=True)) ##Check if the graph is weighted
+    weighted = any("weight" in data for _, _, data in G.edges(data=True))
 
     for clique in nx.enumerate_all_cliques(G):
-      dim = len(clique)-1
+        dim = len(clique) - 1
 
-      if dim not in self.simplicial_complex:
-        self.simplicial_complex[dim]=[]
+        if self.max_dim is not None and dim > self.max_dim:
+            break
 
-      if not weighted or not self.use_weights:
-        filtration_value=dim
+        if dim not in self.simplicial_complex:
+            self.simplicial_complex[dim] = []
 
-      else:
-        if dim==0:
-          filtration_value=0
+        if not weighted or not self.use_weights:
+            filtration_value = dim
 
         else:
-          edges=[
-              G[u][v]["weight"]
-              for i,u in enumerate(clique)
-              for v in clique[i+1:]
-          ]
+            if dim == 0:
+                filtration_value = 0
+            else:
+                edges = [
+                    G[u][v]["weight"]
+                    for i, u in enumerate(clique)
+                    for v in clique[i+1:]
+                ]
+                filtration_value = max(edges)
 
-          filtration_value=max(edges)
+        self.simplicial_complex[dim].append((tuple(clique), filtration_value))
 
-      self.simplicial_complex[dim].append((tuple(clique), filtration_value))
-
-    return self.simplicial_complex
+    return self.simplicial_complexx
 
   def _build_distance_graph(self):
 
@@ -67,7 +70,8 @@ class VietorisRips:
     for i in range(n):
       for j in range(i+1,n):
         d=self._distance(self.data[i],self.data[j])
-        G.add_edge(i,j,weight=d)
+        if self.max_dim is None or d<=self.max_dim:
+          G.add_edge(i,j,weight=d)
 
     return G
 
