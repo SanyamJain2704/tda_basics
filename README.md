@@ -261,3 +261,88 @@ The entire process can be understood as:
 Matrix reduction ensures that:
 * Every feature is born exactly once.
 * Every feature is killed at most once.
+
+---
+
+### 12. What is Persistent Homology?
+
+Persistent homology tracks how topological features (connected components, loops, voids) appear and disappear as we grow the Vietoris–Rips complex by increasing the distance threshold $r$.
+
+For each feature, we record a **birth–death pair**:
+
+$$
+(b, d) \quad \text{where } b < d \leq \infty
+$$
+
+The **persistence** of a feature is defined as:
+
+$$
+\text{persistence} = d - b
+$$
+
+Features with large persistence are considered **topologically significant**, while features with $d \approx b$ are considered **noise**.
+
+---
+
+### 13. Persistence Diagrams
+
+A persistence diagram is a multiset of points in the extended plane:
+
+$$
+\text{Dgm}_k = \{ (b, d) \mid \text{birth-death pairs in dimension } k \}
+$$
+
+Points far from the diagonal $b = d$ represent significant topological features. Points near the diagonal represent noise.
+
+**Example (Circle with $n = 30$ points, $\epsilon = 0.25$):**
+
+$$
+H_0: \text{29 pairs } (0, \approx 0.209) \text{ and one pair } (0, \infty)
+$$
+
+$$
+H_1: \text{one pair } (\approx 0.209, \infty)
+$$
+
+This correctly recovers the topology of a circle: one connected component and one loop.
+
+---
+
+### 14. Grouping Pairs by Dimension
+
+After extracting birth–death pairs, we group them by the dimension of the feature they represent:
+
+- **Dimension 0:** Connected components (vertices and merging edges)
+- **Dimension 1:** Loops (created by edges, killed by triangles)
+- **Dimension 2:** Voids (created by triangles, killed by tetrahedra)
+
+Formally, the dimension of a birth–death pair $(i, j)$ is:
+
+$$
+\dim(\sigma_i) = |\sigma_i| - 1
+$$
+
+where $\sigma_i$ is the simplex born at index $i$.
+
+---
+
+### 15. Effect of the Distance Threshold $\epsilon$
+
+The choice of $\epsilon$ critically affects the output:
+
+- **Too small:** Points remain disconnected, no meaningful topology is captured.
+- **Too large:** All simplices are included at once, loops are immediately filled by triangles, producing many short-lived noise pairs.
+- **Well chosen:** The complex captures the true underlying topology with high-persistence features.
+
+**Example:**
+
+| $\epsilon$ | $H_0$ features | $H_1$ features |
+|---|---|---|
+| $0.25$ | 1 infinite, 29 finite | 1 infinite (the loop) |
+| $0.50$ | 1 infinite, 29 finite | 30 near-zero persistence pairs (noise) |
+
+This illustrates why $\epsilon = 0.25$ correctly recovers the circle's topology while $\epsilon = 0.50$ does not.
+
+---
+
+
