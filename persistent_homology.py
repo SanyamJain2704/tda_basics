@@ -95,3 +95,56 @@ def extract_pairs(filtration, reduced, low_dict):
 
     return pairs
     
+def convert_pairs_to_times(filtration, pairs):
+
+    timed_pairs = []
+
+    for i, j in pairs:
+
+        birth = filtration[i][1]
+
+        if j == float('inf'):
+            death = float('inf')
+        else:
+            death = filtration[j][1]
+
+        timed_pairs.append((birth, death))
+
+    return timed_pairs
+
+def group_pairs_by_dimension(filtration, pairs):
+
+    dim_pairs = {}
+
+    for i, j in pairs:
+
+        simplex = filtration[i][0]
+        dim = len(simplex) - 1
+
+        if dim not in dim_pairs:
+            dim_pairs[dim] = []
+
+        dim_pairs[dim].append((i, j))
+
+    return dim_pairs
+
+def convert_dim_pairs_to_times(filtration, dim_pairs):
+
+    result = {}
+
+    for dim in dim_pairs:
+
+        result[dim] = []
+
+        for i, j in dim_pairs[dim]:
+
+            birth = filtration[i][1]
+
+            if j == float('inf'):
+                death = float('inf')
+            else:
+                death = filtration[j][1]
+
+            result[dim].append((birth, death))
+
+    return result
