@@ -9,7 +9,7 @@ This repo is being made for better understanding of TDA concepts and implementin
 
 ---
 
-## For the Math enthusiasts:
+## Mathematical Preliminaries and some Implementation Details:
 
 ### 1. What is a Vietoris-Rips complex?
 
@@ -345,4 +345,44 @@ This illustrates why $\epsilon = 0.25$ correctly recovers the circle's topology 
 
 ---
 
+### 17. Persistence Diagrams (Visualization)
+
+A persistence diagram plots each birth–death pair $(b, d)$ as a point in the plane:
+
+$$
+\text{Dgm}_k = \{ (b, d) \mid \text{birth-death pairs in dimension } k \}
+$$
+
+- The **diagonal** $b = d$ acts as a reference — points far from it represent significant features.
+- **Infinite features** (pairs of the form $`(b, \infty)`$ are plotted at a fixed proxy value above the diagonal, marked with a star $\star$.
+- Each dimension $k$ is assigned a distinct color:
+
+$$
+H_0 \to \text{blue}, \quad H_1 \to \text{red}, \quad H_2 \to \text{green}
+$$
+
+---
+
+### 18. Barcodes (Visualization)
+
+A barcode represents each birth–death pair $(b, d)$ as a horizontal interval:
+
+$$
+[b, d) \quad \text{for } d < \infty, \qquad [b, \infty) \quad \text{for } d = \infty
+$$
+
+- Each bar corresponds to exactly one topological feature.
+- **Longer bars** indicate more persistent, topologically significant features.
+- **Short bars** near $b \approx d$ indicate noise.
+- Features with $d = \infty$ are drawn with an arrow $(\rightarrow)$ to indicate they never die.
+- Bars are **grouped by dimension** with a visual gap between $H_0, H_1, H_2, \dots$
+
+**Comparison:**
+
+| | Persistence Diagram | Barcode |
+|---|---|---|
+| Representation | Point $(b, d)$ in plane | Interval $[b, d)$ on axis |
+| Diagonal reference | Yes ($b = d$ line) | No |
+| Easy to see persistence | Distance from diagonal | Length of bar |
+| Easy to see birth/death times | Coordinates of point | Endpoints of bar |
 
