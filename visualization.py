@@ -1,4 +1,4 @@
-import matploblib.pylot as plt
+import matploblib.pyplot as plt
 
 def plot_persistence_diagram(dim_times):
 
