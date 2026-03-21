@@ -1,3 +1,5 @@
+import matploblib.pylot as plt
+
 def plot_persistence_diagram(dim_times):
 
     plt.figure(figsize=(6,6))
