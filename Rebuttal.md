@@ -1,4 +1,4 @@
-We thank the reviewer for the constructive feedback, acknowledging the soundness and adequacy of experimental results, finding the concept appealing and acknowledging the well written implementation details.
+We thank the reviewers for the constructive feedback, acknowledging the soundness and adequacy of experimental results, finding the concept appealing and acknowledging the well written implementation details.
 
 Reviewer CueK
 1. **Limited Novelty**:  We agree that topology-aware graph discrimination with GNNs, including GIN-based approaches, is well studied. Our contribution is not another GIN modification to increase local message-passing capacity; rather, we introduce UTS, **which provides global topological information inaccessible to 1-WL-bounded neighborhood aggregation**. For example, $C_6$ and $2\times C_3$ (Figure 1) are 1-WL-equivalent and therefore indistinguishable by standard message passing, despite having different global cycle and connectivity structures. In contrast, Graph-UTS ($\Phi_{\mathrm{grph}}$), computed directly from the input graph using persistent topology and complementary geometric/spectral information, assigns distinct signatures to these graphs. *Such information cannot be obtained by increasing the depth or width of a GIN while remaining within the 1-WL framework*.
@@ -9,5 +9,6 @@ We evaluate UTS across three modular interventions incorporating it into represe
 4. **Scalability:**  We conducted runtime analysis to measure per-graph UTS computation time as a function of graph size, using a synthetic dataset with a fixed average degree of 4 per graph and up to approximately 1,000 nodes. The cost varies substantially across signature variants. At approximately 1,000 nodes, Embedding-UTS and the Lightweight Graph-UTS variant (§4.4) require approximately 0.75 s and 0.38 s per graph, respectively, compared with approximately $\sim4$ s for the full Graph-UTS. Figure 6 in section G.2 of appendix provides a complete summary. The results show that the lightweight and embedding-based variants remain practical as graph size increases, while substantially improving upon the scaling behavior of the full signature.
 
 Reviewer LkLL
+
 5. **Lemma to proposition**: 
 
