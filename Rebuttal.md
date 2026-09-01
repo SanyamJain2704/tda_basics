@@ -10,7 +10,7 @@ We evaluate UTS across three modular interventions incorporating it into represe
 
 Reviewer LkLL
 
-5. **Lemma to proposition**: We thank the reviewer for raising this important point. Subsequently, we have modified the lemma to a proposition. Section 6.2 reflects this change
+5. **Lemma to proposition**: We thank the reviewer for raising this important point. Subsequently, we have modified the lemma to a proposition. Further, in Table 19 in Appendix D.2, we see that indeed, topo-evol is not guaranteed to reduce oversmoothing. Section 6.2 reflects this change from lemma to proposition and appendix C.2 further elaborates on this. 
 
 Regarding the size of the dataset, kindly refer to our response 3 to CuEK. Also Appendix Section B provides complete results using 10 fold CV and 9 seeds for MUTAG while 5 each for PROTEINS and COLLAB.
 
