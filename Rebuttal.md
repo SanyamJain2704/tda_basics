@@ -11,5 +11,6 @@ We evaluate UTS across three modular interventions incorporating it into represe
 Reviewer LkLL
 
 5. **Lemma to proposition**: We thank the reviewer for raising this important point. Subsequently, we have modified the lemma to a proposition. Section 6.2 reflects this change
-Regarding the size of the dataset, kindly refer to our response 3 to CuEK. Also Appendix Section B provides complete results using 10 fold CV and 9 seeds for MUTAG while 5 each for PROTEINS and COLLAB. Appendix B provides all results.
+
+Regarding the size of the dataset, kindly refer to our response 3 to CuEK. Also Appendix Section B provides complete results using 10 fold CV and 9 seeds for MUTAG while 5 each for PROTEINS and COLLAB.
 
