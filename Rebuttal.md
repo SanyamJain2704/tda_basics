@@ -23,5 +23,6 @@ We allocate seeds based on measurement variance. Under 10-fold CV, each MUTAG te
 We increased the number of MUTAG seeds from 5 to 9 to provide a more robust evaluation given its small test set. We also report paired $t$-test results in Appendix Section B. The comparisons are statistically significant on PROTEINS and COLLAB ($p<0.05$), while the corresponding MUTAG comparisons yield $p$-values around 0.1 due to its substantially smaller test set. We therefore interpret the MUTAG results more cautiously.
 
 7. We have _revised the abstract_ to clarify that Graph-UTS and UTS-Pool provide consistent gains, while Embedding-UTS and loss-combination effects are dataset-dependent and can be negative.
+8. **UTS-Pool compared with TOGL**: We have added a direct empirical comparison with TOGL, with the results reported in Table 3 and Appendix Section B.4. The comparison with Wit-TopoPool will be included in the camera-ready version.
    
-8. **Minor typing errors:** We have corrected the noted typographical errors and replaced the obsolete internal labels such as V0/V2a/V2b/V2c with the terminology used in the main paper.
+9. **Minor typing errors:** We have corrected the noted typographical errors and replaced the obsolete internal labels such as V0/V2a/V2b/V2c with the terminology used in the main paper.
