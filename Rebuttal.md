@@ -12,7 +12,7 @@ We evaluate UTS across three modular interventions incorporating it into represe
 
 5. **Lemma to proposition**: We thank the reviewer for this important clarification. We agree that Lemma 1, as originally stated, does not establish that UTS-Reg prevents oversmoothing; it only provides a conditional relationship between representation variance and Dirichlet energy. We have therefore revised the result from a **lemma to a proposition to avoid overstating** its implication. Further, Table 19 in Appendix D.2 shows that the *topo-evol* objective does not consistently reduce oversmoothing across datasets. Section 6.2 has been revised accordingly, and Appendix C.2 provides further discussion of this limitation.
 
-Regarding the experiment of large dataset, kindly refer to our response to Reviewer CuEK. We also provide complete results in Appendix Section B, using 10-fold cross-validation with 9 seeds for MUTAG and 5 seeds each for PROTEINS and COLLAB.
+Regarding the experiment of large dataset, kindly refer to our response to Reviewer CuEK. We also provide complete results in Appendix Section B, using stratified 10-fold cross-validation with 9 seeds for MUTAG and 5 seeds each for PROTEINS and COLLAB.
 
 We allocate seeds based on measurement variance. Under 10-fold CV, each MUTAG test fold has ~19 graphs, versus ~111 for PROTEINS and ~500 for COLLAB, making MUTAG estimates inherently noisier. We therefore use more seeds for MUTAG (9 vs. 5) to provide greater statistical power where variance is higher. This also explains why some MUTAG comparisons remain non-significant, while the same comparisons are significant on PROTEINS/COLLAB.
 
