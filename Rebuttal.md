@@ -1,6 +1,6 @@
 We thank the reviewers for the constructive feedback, acknowledging the soundness and adequacy of experimental results, finding the concept appealing and acknowledging the well written implementation details.
 
-Reviewer CueK
+**Reviewer CueK**
 1. **Limited Novelty**:  We agree that topology-aware graph discrimination with GNNs, including GIN-based approaches, is well studied. Our contribution is not another GIN modification to increase local message-passing capacity; rather, we introduce UTS, **which provides global topological information inaccessible to 1-WL-bounded neighborhood aggregation**. For example, $C_6$ and $2\times C_3$ (Figure 1) are 1-WL-equivalent and therefore indistinguishable by standard message passing, despite having different global cycle and connectivity structures. In contrast, Graph-UTS ($\Phi_{\mathrm{grph}}$), computed directly from the input graph using persistent topology and complementary geometric/spectral information, assigns distinct signatures to these graphs. *Such information cannot be obtained by increasing the depth or width of a GIN while remaining within the 1-WL framework*.
 We evaluate UTS across three modular interventions incorporating it into representation, optimization, and pooling. *The unmodified and unregularized GIN baselines use the same architecture, so improvements from these interventions are not due to additional architectural capacity*. Experiments across MUTAG, PROTEINS, and COLLAB show that these interventions are not tied to a specific dataset or graph domain.
 
@@ -8,7 +8,7 @@ We evaluate UTS across three modular interventions incorporating it into represe
 3. **Experiments on larger datasets:** We agree that the current evaluation on three TU datasets provides limited evidence for broader generalization. We are extending the evaluation to OGBG-PPA, which contains 158,100 graphs—approximately $32\times$ more graphs than COLLAB—with an average of 243.4 nodes and 2,266.1 edges per graph. Due to computational constraints, these experiments are ongoing and will be included in the camera-ready version.
 4. **Scalability:**  We conducted runtime analysis to measure per-graph UTS computation time as a function of graph size, using a synthetic dataset with a fixed average degree of 4 per graph and up to approximately 1,000 nodes. The cost varies substantially across signature variants. At approximately 1,000 nodes, Embedding-UTS and the Lightweight Graph-UTS variant (§4.4) require approximately 0.75 s and 0.38 s per graph, respectively, compared with approximately $\sim4$ s for the full Graph-UTS. Figure 6 in section G.2 of appendix provides a complete summary. The results show that the lightweight and embedding-based variants remain practical as graph size increases, while substantially improving upon the scaling behavior of the full signature.
 
-Reviewer LkLL
+**Reviewer LkLL**
 
 5. **Lemma to proposition**: We thank the reviewer for this important clarification. We agree that Lemma 1, as originally stated, does not establish that UTS-Reg prevents oversmoothing; it only provides a conditional relationship between representation variance and Dirichlet energy. We have therefore revised the result from a **lemma to a proposition to avoid overstating** its implication. Further, Table 19 in Appendix D.2 shows that the *topo-evol* objective does not consistently reduce oversmoothing across datasets. Section 6.2 has been revised accordingly, and Appendix C.2 provides further discussion of this limitation.
 
@@ -16,6 +16,6 @@ Regarding the experiment of large dataset, kindly refer to our response to Revie
 
 We allocate seeds based on measurement variance. Under 10-fold CV, each MUTAG test fold has ~19 graphs, versus ~111 for PROTEINS and ~500 for COLLAB, making MUTAG estimates inherently noisier. We therefore use more seeds for MUTAG (9 vs. 5) to provide greater statistical power where variance is higher. This also explains why some MUTAG comparisons remain non-significant, while the same comparisons are significant on PROTEINS/COLLAB.
 
-Reviewer F7Do
+**Reviewer F7Do**
 
 1. **Baseline performance difference in Table 1 and 2:** We thank the reviewer for pointing out this discrepancy. The two sets of experiments were conducted in separate runs and computational environments, including on different GPU hardware, leading to small variations in the observed vanilla GIN performance. We agree that a common baseline is preferable for interpreting intervention gains. We therefore reran the experiments on the same hardware and have updated the results in Tables 1 and 2 accordingly. [cite and add]
