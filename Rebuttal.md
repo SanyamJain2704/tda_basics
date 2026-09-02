@@ -36,5 +36,5 @@ Consequently, large graphs in PROTEINS and COLLAB retain the full $H_1$-aware Em
 
 [1]K. Xu et al. “How Powerful are Graph Neural Networks?” In: International Conference on Learning Representations. ICLR 2019
 
-12. **Lemma 1 proof** : We thank the reviewer for this observation — it identifies a genuine gap in the original proof, and we agree with the assessment fully. The lemma's proof assumed the regularizer enforces a hard constraint that it does not actually enforce: an unconstrained soft L2 penalty provides no optimization-theoretic guarantee that any fixed variance bound is achieved. We have revised the claim accordingly, renaming Lemma 1 to Proposition 1 and reframing it explicitly as heuristic motivation rather than a proven guarantee, exactly as the reviewer suggests. We have correspondingly updated Section 6.2 and Appendix C.2 
+12. **Lemma 1 proof** : We agree that the original proof contained a gap: it implicitly treated the soft $L_2$ regularizer as a hard constraint, although such a penalty does not provide an optimization-theoretic guarantee of a fixed variance bound. We have therefore renamed Lemma 1 as Proposition 1 and reframed it as a conditional/heuristic motivation rather than a formal guarantee. We have made the corresponding revisions in Section 6.2 and Appendix C.2.
 
