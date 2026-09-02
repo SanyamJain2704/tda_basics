@@ -14,3 +14,5 @@ Reviewer LkLL
 
 Regarding the size of the dataset, kindly refer to our response 3 to CuEK. Also Appendix Section B provides complete results using 10 fold CV and 9 seeds for MUTAG while 5 each for PROTEINS and COLLAB.
 
+We allocate seeds according to measurement variance. Under 10-fold CV, each test fold contains roughly 19 graphs for MUTAG versus ~111 for PROTEINS and ~500 for COLLAB - MUTAG's per-fold accuracy estimates are inherently noisier simply because they're averaged over far fewer graphs. Using more seeds (9 vs. 5) on the smaller, higher-variance dataset is a targeted allocation of statistical power to where it's most needed. This is also why several MUTAG comparisons remain non-significant even at 90 total evaluations, while the same comparisons reach significance on PROTEINS/COLLAB at only 50 — the underlying noise floor, differs by dataset
+
