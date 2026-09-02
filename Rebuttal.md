@@ -32,9 +32,8 @@ Specifically, UTS-Aug computes full cycle-aware $H_1$ persistence for graphs of 
 
 Consequently, large graphs in PROTEINS and COLLAB retain the full $H_1$-aware Embedding-UTS signal, and Dual-UTS achieves the best accuracy on both datasets (Table 1). We acknowledge that the topo-evolution loss loses cycle sensitivity above 50 nodes; this is a computational limitation specific to its training-time surrogate, not to Embedding-UTS or the broader theoretical motivation.
 
-11. **COLLAB results** We re-checked the COLLAB baseline with original GIN paper[1]. We verified the reported results against the original GIN evaluation. The original GIN reports 80.2 ± 1.9% on COLLAB for the standard GIN-0 variant. These results are _substantially closer to our vanilla GIN result of 81.0% than the 67–68% range_ cited by the reviewer.
+11. **COLLAB results**: We re-checked the COLLAB baseline with original GIN paper [1]. We verified the reported results against the original GIN evaluation. The original GIN reports 80.2 ± 1.9% on COLLAB for the standard GIN-0 variant. These results are _substantially closer to our vanilla GIN result of 81.0% than the 67–68% range_ cited by the reviewer.
 
-[1]K. Xu et al. “How Powerful are Graph Neural Networks?” In: International Conference on Learning Representations. ICLR 2019
+12. **Lemma 1 proof**: We agree that the original proof contained a gap: it implicitly treated the soft $L_2$ regularizer as a hard constraint, although such a penalty does not provide an optimization-theoretic guarantee of a fixed variance bound. We have therefore renamed Lemma 1 as Proposition 1 and reframed it as a conditional/heuristic motivation rather than a formal guarantee. We have made the corresponding revisions in Section 6.2 and Appendix C.2.
 
-12. **Lemma 1 proof** : We agree that the original proof contained a gap: it implicitly treated the soft $L_2$ regularizer as a hard constraint, although such a penalty does not provide an optimization-theoretic guarantee of a fixed variance bound. We have therefore renamed Lemma 1 as Proposition 1 and reframed it as a conditional/heuristic motivation rather than a formal guarantee. We have made the corresponding revisions in Section 6.2 and Appendix C.2.
-
+[1] K. Xu et al. “How Powerful are Graph Neural Networks?” In: International Conference on Learning Representations. ICLR 2019
