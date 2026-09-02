@@ -16,3 +16,6 @@ Regarding the experiment of large dataset, kindly refer to our response to Revie
 
 We allocate seeds based on measurement variance. Under 10-fold CV, each MUTAG test fold has ~19 graphs, versus ~111 for PROTEINS and ~500 for COLLAB, making MUTAG estimates inherently noisier. We therefore use more seeds for MUTAG (9 vs. 5) to provide greater statistical power where variance is higher. This also explains why some MUTAG comparisons remain non-significant, while the same comparisons are significant on PROTEINS/COLLAB.
 
+Reviewer F7Do
+
+1. **Baseline performance difference in Table 1 and 2:** We thank the reviewer for pointing out this discrepancy. The two sets of experiments were conducted in separate runs and computational environments, including on different GPU hardware, leading to small variations in the observed vanilla GIN performance. We agree that a common baseline is preferable for interpreting intervention gains. We therefore reran the experiments on the same hardware and have updated the results in Tables 1 and 2 accordingly. [cite and add]
