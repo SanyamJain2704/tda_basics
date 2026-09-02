@@ -36,4 +36,6 @@ Consequently, large graphs in PROTEINS and COLLAB retain the full $H_1$-aware Em
 
 12. **Lemma 1 proof**: We agree that the original proof contained a gap: it implicitly treated the soft $L_2$ regularizer as a hard constraint, although such a penalty does not provide an optimization-theoretic guarantee of a fixed variance bound. We have therefore renamed Lemma 1 as Proposition 1 and reframed it as a conditional/heuristic motivation rather than a formal guarantee. We have made the corresponding revisions in Section 6.2 and Appendix C.2.
 
+13. We thank the reviewer for this suggestion, which we have addressed directly. Table 19 now reports layer-wise OSI for both baseline and UTS-Reg models across all three datasets. This finding is also what motivates our revision of Lemma 1 to Proposition 1 as the oversmoothing claim is dataset-dependent.
+
 [1] K. Xu et al. “How Powerful are Graph Neural Networks?” In: International Conference on Learning Representations. ICLR 2019
