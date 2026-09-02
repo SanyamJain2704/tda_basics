@@ -18,4 +18,7 @@ We allocate seeds based on measurement variance. Under 10-fold CV, each MUTAG te
 
 **Reviewer F7Do**
 
-1. **Baseline performance difference in Table 1 and 2:** We thank the reviewer for pointing out this discrepancy. The two sets of experiments were conducted in separate runs and computational environments, including on different GPU hardware, leading to small variations in the observed vanilla GIN performance. We agree that a common baseline is preferable for interpreting intervention gains. We therefore reran the experiments on the same hardware and have updated the results in Tables 1 and 2 accordingly. We have correspondingly updated Section 5.1, 5.2, 5.3, 5.4 and Appendix B.
+6. **Baseline performance difference in Table 1 and 2:** We thank the reviewer for pointing out this discrepancy. The two sets of experiments were conducted in separate runs and computational environments, including on different GPU hardware, leading to small variations in the observed vanilla GIN performance. We agree that a common baseline is preferable for interpreting intervention gains. We therefore reran the experiments on the same hardware and have updated the results in Tables 1 and 2 accordingly. We have correspondingly updated Section 5.1, 5.2, 5.3, 5.4 and Appendix B.
+
+We increased the number of MUTAG seeds from 5 to 9 to provide a more robust evaluation given its small test set. We also report paired $t$-test results in Appendix Section B. The comparisons are statistically significant on PROTEINS and COLLAB ($p<0.05$), while the corresponding MUTAG comparisons yield $p$-values around 0.1 due to its substantially smaller test set. We therefore interpret the MUTAG results more cautiously.
+7. 
