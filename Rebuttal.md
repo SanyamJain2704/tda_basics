@@ -36,3 +36,6 @@ Consequently, large graphs in PROTEINS and COLLAB are not excluded from the cycl
 11. **COLLAB results** We re-checked the COLLAB baseline with original GIN paper[1]. We verified the reported results against the original GIN evaluation. The original GIN reports 80.2 ± 1.9% on COLLAB for the standard GIN-0 variant. These results are _substantially closer to our vanilla GIN result of 81.0% than the 67–68% range_ cited by the reviewer.
 
 [1]K. Xu et al. “How Powerful are Graph Neural Networks?” In: International Conference on Learning Representations. ICLR 2019
+
+12. **Lemma 1 proof** : We thank the reviewer for this observation — it identifies a genuine gap in the original proof, and we agree with the assessment fully. The lemma's proof assumed the regularizer enforces a hard constraint that it does not actually enforce: an unconstrained soft L2 penalty provides no optimization-theoretic guarantee that any fixed variance bound is achieved. We have revised the claim accordingly, renaming Lemma 1 to Proposition 1 and reframing it explicitly as heuristic motivation rather than a proven guarantee, exactly as the reviewer suggests. We have correspondingly updated Section 6.2 and Appendix C.2 
+
