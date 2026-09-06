@@ -41,7 +41,7 @@ Both individual losses improve over the unregularized GIN baseline, with $L_{\ma
 
 UTS-Pool achieves 68.85%, outperforming TopKPool and SAGPool by 1.32% and 0.97%, respectively, with statistically significant differences (\(p=0.0001\) and \(p=0.0003\)). Compared with TOGL, UTS-Pool is slightly lower by 0.12%, although the difference is statistically significant (\(p=0.0008\)). Overall, UTS-Pool remains competitive with topology-aware pooling while providing consistent gains over the generic pooling baselines.
 
-_Conclusion: Results on the larger OGBG-PPA benchmark are consistent with those on the three smaller TU datasets across all three interventions, further supporting the effectiveness of incorporating UTS-based topological information into GNN learning._
+**Conclusion: Results on the larger OGBG-PPA benchmark are consistent with those on the three smaller TU datasets across all three interventions, further supporting the effectiveness of incorporating UTS-based topological information into GNN learning.**
 
 
 
