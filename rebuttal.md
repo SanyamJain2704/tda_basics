@@ -32,7 +32,7 @@ Both individual losses improve over the unregularized GIN baseline, with $L_{\ma
 
 *All variants use the same GIN backbone and differ only in the pooling mechanism.*
 
-| Variant | Mean ± Std | Δ vs. UTSTopPool | 95% CI | p |
+| Variant | Mean ± Std | Δ vs. UTS-Pool | 95% CI | p |
 |---|---|---|---|---|
 | UTS-Pool (ours) | **68.85 ± 0.891** | — | — | — |
 | TopKPool | 67.53 ± 0.988 | −1.32 | [−1.75, −0.89] | 0.0001 |
