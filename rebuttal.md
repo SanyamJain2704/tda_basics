@@ -1,9 +1,9 @@
 
 
-# These are the complete results for ogbg-ppa and across all three benchmarks, UTS descriptors and UTSTopPool deliver consistent, statistically significant gains over the baseline, with ogbg-ppa showing the strongest descriptor effect of the four.
+These are the complete results for ogbg-ppa and across all three benchmarks, UTS descriptors and UTSTopPool deliver consistent, statistically significant gains over the baseline, with ogbg-ppa showing the strongest descriptor effect of the four.
 
 
-## 1. Descriptor Ablation (UTS-Aug)
+## 1. UTS-Aug
 
 *Baseline: GIN (unregularized). Accuracy (%), official OGB species split, 3 seeds.*
 
